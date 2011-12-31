@@ -4,6 +4,24 @@
              StartupUri="Views\MainWindow.xaml"
              Startup="Application_Startup">
     <Application.Resources>
-         
+        <ResourceDictionary>
+            <ResourceDictionary.MergedDictionaries>
+                <ResourceDictionary Source="Themes\ShinyBlue.xaml"/>
+            </ResourceDictionary.MergedDictionaries>
+            <BitmapImage x:Key="ImageUpdate" UriSource="Images/arrow-circle-315.png" />
+            <BitmapImage x:Key="ImageSearch" UriSource="Images/binocular.png" />
+            <BitmapImage x:Key="ImageComponent" UriSource="Images/block.png" />
+            <BitmapImage x:Key="ImageNamingService" UriSource="Images/computer.png" />
+            <BitmapImage x:Key="ImageContext" UriSource="Images/folder.png" />
+            <BitmapImage x:Key="ImageOutPort" UriSource="Images/plug.png" />
+            <BitmapImage x:Key="ImageInPort" UriSource="Images/socket.png" />
+            <BitmapImage x:Key="ImageSetting" UriSource="Images/gear.png" />
+            <BitmapImage x:Key="ImageClose" UriSource="Images/cross-white.png" />
+            <BitmapImage x:Key="ImageAdd" UriSource="Images/plus-circle.png" />
+            <BitmapImage x:Key="ImageAbout" UriSource="Images/information.png" />
+            <BitmapImage x:Key="ImageApplication" UriSource="Images/application-text.png" />
+            <BitmapImage x:Key="ImageAnalysis" UriSource="Images/chart.png" />
+        </ResourceDictionary>
+
     </Application.Resources>
 </Application>

@@ -1,19 +1,9 @@
-﻿using System;
-using System.Collections.Generic;
-using System.Linq;
-using System.Text;
-using System.Windows;
+﻿using System.Windows;
 using System.Windows.Controls;
-using System.Windows.Data;
-using System.Windows.Documents;
 using System.Windows.Input;
-using System.Windows.Media;
-using System.Windows.Media.Imaging;
-using System.Windows.Navigation;
-using System.Windows.Shapes;
 using RtLiaison.ViewModels;
 
-namespace RTCube.Views
+namespace RtLiaison.Views
 {
     /// <summary>
     /// DiagramView.xaml の相互作用ロジック
@@ -49,12 +39,12 @@ namespace RTCube.Views
         {
             // マウスダウンされたアイテムを記憶
             var dragItem = sender as ListViewItem;
-            var vm = dragItem.Content as RtComponentViewModel;
-            var name = vm.NamingName;
+            var vm = dragItem.Content as RtcViewModel;
+            //var name = vm.NamingName;
             // マウスダウン時の座標を取得
             //dragStartPos = e.GetPosition(dragItem);
 
-            DragDrop.DoDragDrop(dragItem, name, DragDropEffects.Copy);
+            //DragDrop.DoDragDrop(dragItem, name, DragDropEffects.Copy);
         }
 
         private void listBoxItem_PreviewMouseMove(object sender, MouseEventArgs e)

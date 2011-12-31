@@ -1,4 +1,5 @@
 ﻿using System.Windows;
+using Codeplex.Reactive;
 using Livet;
 using ReactiveRTM.Core;
 
@@ -12,11 +13,11 @@ namespace RtLiaison.ViewModels
         {
             _rtcManager = rtcManager;
 
-            RtComponentListViewModel = new RtComponentListViewModel(_rtcManager);
+            RtcListViewModel = new RtcListViewModel(_rtcManager);
 
-            Components = new DispatcherCollection<RtComponentDiagramViewModel>(DispatcherHelper.UIDispatcher);
+            Components = new ReactiveCollection<RtcDiagramViewModel>();
 
-            Connectors = new DispatcherCollection<ConnectorLineViewModel>(DispatcherHelper.UIDispatcher);
+            Connectors = new ReactiveCollection<ConnectorLineViewModel>();
 
             var testLine = new ConnectorLineViewModel();
             testLine.Points.Add(new Point(100, 75));
@@ -28,7 +29,7 @@ namespace RtLiaison.ViewModels
 
         }
 
-        public RtComponentListViewModel RtComponentListViewModel
+        public RtcListViewModel RtcListViewModel
         {
             get;
             private set;
@@ -36,16 +37,18 @@ namespace RtLiaison.ViewModels
 
         public void AddDiagram(string name, Point position)
         {
+            /*
             var rtc = _rtcManager.RtComponents.FirstOrDefault(x => x.NamingName == name);
             if (rtc != null)
             {
-                Components.Add(new RtComponentDiagramViewModel(rtc, (int)position.X, (int)position.Y));
+                Components.Add(new RtcDiagramViewModel(rtc, (int)position.X, (int)position.Y));
             }
+            */
         }
 
-        public DispatcherCollection<RtComponentDiagramViewModel> Components { get; private set; }
+        public ReactiveCollection<RtcDiagramViewModel> Components { get; private set; }
 
-        public DispatcherCollection<ConnectorLineViewModel> Connectors { get; private set; }
+        public ReactiveCollection<ConnectorLineViewModel> Connectors { get; private set; }
 
     }
 }

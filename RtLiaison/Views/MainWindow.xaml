@@ -5,14 +5,43 @@
         xmlns:ei="http://schemas.microsoft.com/expression/2010/interactions"
         xmlns:l="http://schemas.livet-mvvm.net/2011/wpf"
         xmlns:v="clr-namespace:RtLiaison.Views"
-        xmlns:vm="clr-namespace:RtLiaison.ViewModels"
-        Title="MainWindow" Height="350" Width="525">
+        xmlns:vm="clr-namespace:RtLiaison.ViewModels" 
+        Title="MainWindow"
+        Height="600" Width="800">
     
     <Window.DataContext>
         <vm:MainWindowViewModel/>
     </Window.DataContext>
-    
+
     <Grid>
-        
+        <Grid.ColumnDefinitions>
+            <ColumnDefinition Width="1*"/>
+            <ColumnDefinition Width="3*"/>
+        </Grid.ColumnDefinitions>
+
+        <!--ネーミングサービスビュー-->
+        <v:NamingServiceTreeView Grid.Column="0" DataContext="{Binding NamingServiceTreeViewModel}"/>
+
+        <GridSplitter Width="5" Grid.Column="0" ShowsPreview="True"
+                                  VerticalAlignment="Stretch" HorizontalAlignment="Right"/>
+
+        <Grid Grid.Column="1" Margin="5" >
+            <Grid.RowDefinitions>
+                <RowDefinition Height="3*"/>
+                <RowDefinition Height="1*"/>
+            </Grid.RowDefinitions>
+
+            <!--  -->
+            <v:DiagramView Grid.Row="0" DataContext="{Binding DiagramViewModel}"/>
+
+
+            <GridSplitter Height="5" Grid.Row="0" ShowsPreview="True" 
+                                      HorizontalAlignment="Stretch" VerticalAlignment="Bottom"/>
+
+            <v:InteractiveView Grid.Row="1"  DataContext="{Binding InteractiveViewModel}"/>
+
+
+        </Grid>
     </Grid>
+    
 </Window>

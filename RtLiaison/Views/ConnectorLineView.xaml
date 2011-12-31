@@ -1,9 +1,9 @@
-﻿<UserControl x:Class="RTCube.Views.ConnectorLineView"
+﻿<UserControl x:Class="RtLiaison.Views.ConnectorLineView"
              xmlns="http://schemas.microsoft.com/winfx/2006/xaml/presentation"
              xmlns:x="http://schemas.microsoft.com/winfx/2006/xaml"
              xmlns:mc="http://schemas.openxmlformats.org/markup-compatibility/2006" 
              xmlns:d="http://schemas.microsoft.com/expression/blend/2008"
-             xmlns:l="clr-namespace:RTCube.Views.Converters" xmlns:spline="clr-namespace:CanonicalSplineLib"
+             xmlns:spline="clr-namespace:CanonicalSplineLib" xmlns:l="clr-namespace:RtLiaison.Converters"
              mc:Ignorable="d" 
              d:DesignHeight="300" d:DesignWidth="300">
     <UserControl.Resources>
@@ -13,29 +13,8 @@
         <!-- 線分情報をbindingする -->
         <!-- http://social.msdn.microsoft.com/Forums/en-US/wpf/thread/1293d4cb-87b3-4cdc-97e3-ae2f41caf2d4/ -->
 
-        <!--<Path Stroke="Black" StrokeThickness="3">
-            <Path.Data>
-                <PathGeometry>
-                    <PathGeometry.Figures>
-                        <PathFigureCollection>
-                            <PathFigure StartPoint="10,100">
-                                <PathFigure.Segments>
-                                    <PathSegmentCollection>
-                                        <PolyQuadraticBezierSegment Points="{Binding Points, Converter={StaticResource pointCollectionConverter}}" />
-                                    </PathSegmentCollection>
-                                </PathFigure.Segments>
-                            </PathFigure>
-                        </PathFigureCollection>
-                    </PathGeometry.Figures>
-                </PathGeometry>
-            </Path.Data>
-        </Path>-->
-
-
         <!-- PolyQuadraticBezierSegment(ベジェ)では指定した点を通らないのでスプライン -->
         <spline:CanonicalSpline Stroke="Red" StrokeThickness="3" Tension="1"
                                 Points="{Binding Points, Converter={StaticResource pointCollectionConverter}}"/>
-        <!--<spline:CanonicalSpline Stroke="Red" StrokeThickness="3" Tension="1"
-                                Points="100 75 150 25 200 150 250 25 300 75"/>-->
     </Grid>
 </UserControl>

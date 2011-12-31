@@ -35,26 +35,67 @@
     <WarningLevel>4</WarningLevel>
   </PropertyGroup>
   <ItemGroup>
-    <Reference Include="Livet">
-      <SpecificVersion>False</SpecificVersion>
-      <HintPath>InfrastructureAssemblies\Livet.dll</HintPath>
+    <Reference Include="AurelienRibon.Ui.Terminal">
+      <HintPath>..\Lib\AurelienRibon.Ui.Terminal 1.2.2\AurelienRibon.Ui.Terminal.dll</HintPath>
     </Reference>
-    <Reference Include="Microsoft.Expression.Interactions">
+    <Reference Include="IronPython, Version=2.6.10920.0, Culture=neutral, PublicKeyToken=31bf3856ad364e35, processorArchitecture=MSIL">
       <SpecificVersion>False</SpecificVersion>
-      <HintPath>InfrastructureAssemblies\Microsoft.Expression.Interactions.dll</HintPath>
+      <HintPath>..\packages\IronPython.2.6.1\lib\Net40\IronPython.dll</HintPath>
+    </Reference>
+    <Reference Include="IronPython.Modules">
+      <HintPath>..\packages\IronPython.2.6.1\lib\Net40\IronPython.Modules.dll</HintPath>
+    </Reference>
+    <Reference Include="Livet">
+      <HintPath>..\Lib\Livet-0.99\Livet.dll</HintPath>
+    </Reference>
+    <Reference Include="Microsoft.Dynamic">
+      <HintPath>..\packages\IronPython.2.6.1\lib\Net40\Microsoft.Dynamic.dll</HintPath>
+    </Reference>
+    <Reference Include="Microsoft.Expression.Interactions, Version=4.0.0.0, Culture=neutral, PublicKeyToken=31bf3856ad364e35, processorArchitecture=MSIL">
+      <HintPath>..\Lib\Livet-0.99\Microsoft.Expression.Interactions.dll</HintPath>
+    </Reference>
+    <Reference Include="Microsoft.Scripting">
+      <HintPath>..\packages\IronPython.2.6.1\lib\Net40\Microsoft.Scripting.dll</HintPath>
     </Reference>
     <Reference Include="ReactiveProperty.NET40">
-      <HintPath>..\packages\ReactiveProperty.0.2.0.0\lib\NET40\ReactiveProperty.NET40.dll</HintPath>
+      <HintPath>..\packages\ReactiveProperty.0.3.2.0\lib\NET40\ReactiveProperty.NET40.dll</HintPath>
+    </Reference>
+    <Reference Include="Roslyn.Compilers, Version=1.0.0.0, Culture=neutral, PublicKeyToken=31bf3856ad364e35, processorArchitecture=MSIL">
+      <Private>True</Private>
+      <HintPath>..\packages\Roslyn.1.0.11014.5\lib\net40\Roslyn.Compilers.dll</HintPath>
+    </Reference>
+    <Reference Include="Roslyn.Compilers.CSharp, Version=1.0.0.0, Culture=neutral, PublicKeyToken=31bf3856ad364e35, processorArchitecture=MSIL">
+      <Private>True</Private>
+      <HintPath>..\packages\Roslyn.1.0.11014.5\lib\net40\Roslyn.Compilers.CSharp.dll</HintPath>
+    </Reference>
+    <Reference Include="Roslyn.Compilers.VisualBasic, Version=1.0.0.0, Culture=neutral, PublicKeyToken=31bf3856ad364e35, processorArchitecture=MSIL">
+      <Private>True</Private>
+      <HintPath>..\packages\Roslyn.1.0.11014.5\lib\net40\Roslyn.Compilers.VisualBasic.dll</HintPath>
+    </Reference>
+    <Reference Include="Roslyn.Services, Version=1.0.0.0, Culture=neutral, PublicKeyToken=31bf3856ad364e35, processorArchitecture=MSIL">
+      <Private>True</Private>
+      <HintPath>..\packages\Roslyn.1.0.11014.5\lib\net40\Roslyn.Services.dll</HintPath>
+    </Reference>
+    <Reference Include="Roslyn.Services.CSharp, Version=1.0.0.0, Culture=neutral, PublicKeyToken=31bf3856ad364e35, processorArchitecture=MSIL">
+      <Private>True</Private>
+      <HintPath>..\packages\Roslyn.1.0.11014.5\lib\net40\Roslyn.Services.CSharp.dll</HintPath>
+    </Reference>
+    <Reference Include="Roslyn.Services.VisualBasic, Version=1.0.0.0, Culture=neutral, PublicKeyToken=31bf3856ad364e35, processorArchitecture=MSIL">
+      <Private>True</Private>
+      <HintPath>..\packages\Roslyn.1.0.11014.5\lib\net40\Roslyn.Services.VisualBasic.dll</HintPath>
     </Reference>
     <Reference Include="System" />
     <Reference Include="System.ComponentModel.Composition" />
     <Reference Include="System.ComponentModel.DataAnnotations" />
     <Reference Include="System.Data" />
+    <Reference Include="System.Interactive">
+      <HintPath>..\packages\Ix_Experimental-Main.1.1.10823\lib\Net4\System.Interactive.dll</HintPath>
+    </Reference>
     <Reference Include="System.Reactive, Version=1.0.10621.0, Culture=neutral, PublicKeyToken=31bf3856ad364e35, processorArchitecture=MSIL">
-      <HintPath>..\packages\Rx-Main.1.0.10621\lib\Net4\System.Reactive.dll</HintPath>
+      <HintPath>..\packages\Rx-Main.1.0.11226\lib\Net4\System.Reactive.dll</HintPath>
     </Reference>
     <Reference Include="System.Windows.Interactivity, Version=4.0.0.0, Culture=neutral, PublicKeyToken=31bf3856ad364e35, processorArchitecture=MSIL">
-      <HintPath>..\packages\ReactiveProperty.0.2.0.0\lib\NET40\System.Windows.Interactivity.dll</HintPath>
+      <HintPath>..\Lib\Livet-0.99\System.Windows.Interactivity.dll</HintPath>
     </Reference>
     <Reference Include="System.Xml" />
     <Reference Include="Microsoft.CSharp" />
@@ -73,28 +114,51 @@
       <Generator>MSBuild:Compile</Generator>
       <SubType>Designer</SubType>
     </ApplicationDefinition>
+    <Compile Include="Models\CSharpScriptEngine.cs" />
+    <Compile Include="Models\PythonScriptEngine.cs" />
     <Compile Include="ViewModels\ConnectorLineViewModel.cs" />
     <Compile Include="ViewModels\DiagramViewModel.cs" />
-    <Compile Include="ViewModels\RtComponentDiagramViewModel.cs" />
-    <Compile Include="ViewModels\RtComponentViewModel.cs" />
-    <Compile Include="Views\Controls\CanonicalSpline.xaml.cs">
+    <Compile Include="ViewModels\InteractiveViewModel.cs" />
+    <Compile Include="ViewModels\NamingServiceTreeViewModel.cs" />
+    <Compile Include="ViewModels\RtcDiagramViewModel.cs" />
+    <Compile Include="ViewModels\RtcListViewModel.cs" />
+    <Compile Include="ViewModels\RtcViewModel.cs" />
+    <Compile Include="Actions\InsertPromptAction.cs" />
+    <Compile Include="Actions\InvokeDelegateCommandAction.cs" />
+    <Compile Include="Actions\SetFocusAction.cs" />
+    <Compile Include="Behaviors\DiagramMoveBehavior.cs" />
+    <Compile Include="Behaviors\PlaceHolderBehavior.cs" />
+    <Compile Include="Behaviors\SelectAllTextOnFocusBehavior.cs" />
+    <Compile Include="ViewModels\TreeViewItemViewModel.cs" />
+    <Compile Include="Controls\CanonicalSpline.xaml.cs">
       <DependentUpon>CanonicalSpline.xaml</DependentUpon>
     </Compile>
-    <Compile Include="Views\Controls\CanonicalSplineHelper.cs" />
-    <Compile Include="Views\RtComponentDiagramView.xaml.cs">
-      <DependentUpon>RtComponentDiagramView.xaml</DependentUpon>
+    <Compile Include="Controls\CanonicalSplineHelper.cs" />
+    <Compile Include="Converters\PointCollectionConverter.cs" />
+    <Compile Include="Views\InteractiveView.xaml.cs">
+      <DependentUpon>InteractiveView.xaml</DependentUpon>
+    </Compile>
+    <Compile Include="Views\NamingServiceTreeView.xaml.cs">
+      <DependentUpon>NamingServiceTreeView.xaml</DependentUpon>
+    </Compile>
+    <Compile Include="Views\RtcDiagramView.xaml.cs">
+      <DependentUpon>RtcDiagramView.xaml</DependentUpon>
     </Compile>
     <Page Include="Views\ConnectorLineView.xaml">
       <Generator>MSBuild:Compile</Generator>
       <SubType>Designer</SubType>
     </Page>
-    <Page Include="Views\Controls\CanonicalSpline.xaml">
+    <Page Include="Controls\CanonicalSpline.xaml">
       <Generator>MSBuild:Compile</Generator>
       <SubType>Designer</SubType>
     </Page>
     <Page Include="Views\DiagramView.xaml">
       <Generator>MSBuild:Compile</Generator>
       <SubType>Designer</SubType>
+    </Page>
+    <Page Include="Views\InteractiveView.xaml">
+      <SubType>Designer</SubType>
+      <Generator>MSBuild:Compile</Generator>
     </Page>
     <Page Include="Views\MainWindow.xaml">
       <Generator>MSBuild:Compile</Generator>
@@ -104,7 +168,6 @@
       <DependentUpon>App.xaml</DependentUpon>
       <SubType>Code</SubType>
     </Compile>
-    <Compile Include="Models\Model.cs" />
     <Compile Include="ViewModels\MainWindowViewModel.cs" />
     <Compile Include="Views\ConnectorLineView.xaml.cs">
       <DependentUpon>ConnectorLineView.xaml</DependentUpon>
@@ -116,10 +179,18 @@
       <DependentUpon>MainWindow.xaml</DependentUpon>
       <SubType>Code</SubType>
     </Compile>
-    <Page Include="Views\RtComponentDiagramView.xaml">
+    <Page Include="Views\NamingServiceTreeView.xaml">
+      <SubType>Designer</SubType>
+      <Generator>MSBuild:Compile</Generator>
+    </Page>
+    <Page Include="Views\RtcDiagramView.xaml">
       <Generator>MSBuild:Compile</Generator>
       <SubType>Designer</SubType>
     </Page>
+    <Resource Include="Themes\ShinyBlue.xaml">
+      <Generator>MSBuild:Compile</Generator>
+      <SubType>Designer</SubType>
+    </Resource>
   </ItemGroup>
   <ItemGroup>
     <Compile Include="Properties\AssemblyInfo.cs">
@@ -139,6 +210,7 @@
       <Generator>ResXFileCodeGenerator</Generator>
       <LastGenOutput>Resources.Designer.cs</LastGenOutput>
     </EmbeddedResource>
+    <None Include="eula.rtf" />
     <None Include="packages.config" />
     <None Include="Properties\Settings.settings">
       <Generator>SettingsSingleFileGenerator</Generator>
@@ -147,22 +219,25 @@
     <AppDesigner Include="Properties\" />
   </ItemGroup>
   <ItemGroup>
-    <Content Include="InfrastructureAssemblies\Design\Livet.Design.dll" />
-    <Content Include="InfrastructureAssemblies\Design\Livet.Expression.Design.dll" />
-    <Content Include="InfrastructureAssemblies\Livet.dll" />
-    <Resource Include="InfrastructureAssemblies\Livet.XML" />
-    <Content Include="InfrastructureAssemblies\Microsoft.Expression.Interactions.dll" />
-    <Content Include="InfrastructureAssemblies\System.Windows.Interactivity.dll" />
-  </ItemGroup>
-  <ItemGroup>
     <ProjectReference Include="..\..\ReactiveRTM\ReactiveRTM\ReactiveRTM.csproj">
       <Project>{C63F2C9F-F4E2-420E-95E1-A46679DD818D}</Project>
       <Name>ReactiveRTM</Name>
     </ProjectReference>
-    <ProjectReference Include="..\RtLiaison.Extensibility\RtLiaison.Extensibility.csproj">
-      <Project>{239FB7FA-E54F-4716-8451-9A27DDD43F51}</Project>
-      <Name>RtLiaison.Extensibility</Name>
-    </ProjectReference>
+  </ItemGroup>
+  <ItemGroup>
+    <Resource Include="Images\application-text.png" />
+    <Resource Include="Images\arrow-circle-315.png" />
+    <Resource Include="Images\binocular.png" />
+    <Resource Include="Images\block.png" />
+    <Resource Include="Images\chart.png" />
+    <Resource Include="Images\computer.png" />
+    <Resource Include="Images\cross-white.png" />
+    <Resource Include="Images\folder.png" />
+    <Resource Include="Images\gear.png" />
+    <Resource Include="Images\information.png" />
+    <Resource Include="Images\plug.png" />
+    <Resource Include="Images\plus-circle.png" />
+    <Resource Include="Images\socket.png" />
   </ItemGroup>
   <Import Project="$(MSBuildToolsPath)\Microsoft.CSharp.targets" />
   <!-- To modify your build process, add your task inside one of the targets below and uncomment it. 
