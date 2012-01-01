@@ -20,7 +20,7 @@
         </Grid.ColumnDefinitions>
 
         <!--ネーミングサービスビュー-->
-        <v:NamingServiceTreeView Grid.Column="0" DataContext="{Binding NamingServiceTreeViewModel}"/>
+        <v:NamingServiceTreeView Grid.Column="0" Margin="0,0,5,0" DataContext="{Binding NamingServiceTreeViewModel}"/>
 
         <GridSplitter Width="5" Grid.Column="0" ShowsPreview="True"
                                   VerticalAlignment="Stretch" HorizontalAlignment="Right"/>

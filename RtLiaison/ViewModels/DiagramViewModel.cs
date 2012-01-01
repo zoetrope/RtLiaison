@@ -2,6 +2,7 @@
 using Codeplex.Reactive;
 using Livet;
 using ReactiveRTM.Core;
+using RtLiaison.ViewModels.Diagrams;
 
 namespace RtLiaison.ViewModels
 {
@@ -19,13 +20,9 @@ namespace RtLiaison.ViewModels
 
             Connectors = new ReactiveCollection<ConnectorLineViewModel>();
 
-            var testLine = new ConnectorLineViewModel();
-            testLine.Points.Add(new Point(100, 75));
-            testLine.Points.Add(new Point(150, 25));
-            testLine.Points.Add(new Point(200, 150));
-            testLine.Points.Add(new Point(250, 25));
-            testLine.Points.Add(new Point(300, 75));
-            Connectors.Add(testLine);
+            ConnectingLine = new ConnectorLineViewModel(100, 100, 300, 300);
+
+            //Connectors.Add(testLine);
 
         }
 
@@ -37,6 +34,7 @@ namespace RtLiaison.ViewModels
 
         public void AddDiagram(string name, Point position)
         {
+            Components.Add(new RtcDiagramViewModel(null, (int)position.X, (int)position.Y));
             /*
             var rtc = _rtcManager.RtComponents.FirstOrDefault(x => x.NamingName == name);
             if (rtc != null)
@@ -50,5 +48,11 @@ namespace RtLiaison.ViewModels
 
         public ReactiveCollection<ConnectorLineViewModel> Connectors { get; private set; }
 
+        public ConnectorLineViewModel ConnectingLine { get; set; }
+
+        public void UpdateConnectingLine(double x1, double y1, double x2, double y2)
+        {
+            ConnectingLine.Update(x1, y1, x2, y2);
+        }
     }
 }

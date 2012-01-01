@@ -21,6 +21,43 @@
             <BitmapImage x:Key="ImageAbout" UriSource="Images/information.png" />
             <BitmapImage x:Key="ImageApplication" UriSource="Images/application-text.png" />
             <BitmapImage x:Key="ImageAnalysis" UriSource="Images/chart.png" />
+
+
+            <!--画像を使ったボタン-->
+            <Style x:Key="ImageButtonStyle" TargetType="Button">
+                <Setter Property="Background" Value="Transparent"/>
+                <Setter Property="Foreground" Value="Transparent"/>
+                <Setter Property="BorderThickness" Value="1"/>
+                <Setter Property="Template">
+                    <Setter.Value>
+                        <ControlTemplate TargetType="Button">
+                            <Border Background="{TemplateBinding Background}" 
+                                BorderThickness="{TemplateBinding BorderThickness}"
+                                BorderBrush="{TemplateBinding Foreground}" 
+                                CornerRadius="3"
+                                Cursor="Hand"
+                                Padding="3">
+                                <Image Width="16" Height="16" 
+                                   Source="{Binding Path=Tag, RelativeSource={RelativeSource TemplatedParent}}" 
+                                   ToolTip="{TemplateBinding Content}"/>
+                            </Border>
+                        </ControlTemplate>
+                    </Setter.Value>
+                </Setter>
+                <Style.Triggers>
+                    <Trigger Property="IsMouseOver" Value="true">
+                        <Setter Property="Foreground" Value="LightSlateGray" />
+                        <Setter Property="Background" Value="Transparent" />
+                    </Trigger>
+                    <Trigger Property="IsPressed" Value="true">
+                        <Setter Property="Foreground" Value="LightSlateGray" />
+                        <Setter Property="Background" Value="LightGray" />
+                    </Trigger>
+                    <Trigger Property="IsEnabled" Value="false">
+                        <Setter Property="Opacity" Value="0.2"/>
+                    </Trigger>
+                </Style.Triggers>
+            </Style>
         </ResourceDictionary>
 
     </Application.Resources>

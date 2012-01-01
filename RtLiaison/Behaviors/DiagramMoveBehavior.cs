@@ -3,12 +3,13 @@ using System.Windows.Input;
 using System.Windows.Interactivity;
 using System.Windows.Shapes;
 using RtLiaison.ViewModels;
+using RtLiaison.ViewModels.Diagrams;
 
 namespace RtLiaison.Behaviors
 {
     // ドラッグで移動するBehavior
     // http://d.hatena.ne.jp/okazuki/20100425/1272154217
-    class DiagramMoveBehavior : Behavior<Rectangle>
+    class DiagramMoveBehavior : Behavior<FrameworkElement>
     {
         // マウスが押されているかどうかのフラグ
         private bool _mouseDown;

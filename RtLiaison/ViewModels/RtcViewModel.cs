@@ -3,6 +3,7 @@ using Livet;
 using Livet.Commands;
 using ReactiveRTM.Core;
 using ReactiveRTM.Extensions;
+using RtLiaison.ViewModels.Diagrams;
 
 namespace RtLiaison.ViewModels
 {
@@ -13,11 +14,11 @@ namespace RtLiaison.ViewModels
         public RtcViewModel(ObservableComponent rtc)
         {
             _rtComponent = rtc;
-            
 
+            OutPortViewModel = new PortViewModel();
 
         }
 
-
+        public PortViewModel OutPortViewModel { get; set; }
     }
 }

@@ -76,7 +76,7 @@ namespace RtLiaison.ViewModels
                     var root = _client.RootContextInfo;
                     _children = new ObservableCollection<TreeViewItemViewModel>();
                     _children.AddRange(root.Contexts.Select(x => new ContextItemViewModel(x)));
-                    _children.AddRange(root.Objects.Select(x=>new ComponentItemViewModel(x)));
+                    _children.AddRange(root.Objects.Select(x=>new RtcItemViewModel(x)));
                 }
 
                 return _children;
@@ -109,7 +109,7 @@ namespace RtLiaison.ViewModels
                 {
                     _children = new ObservableCollection<TreeViewItemViewModel>();
                     _children.AddRange(_context.Contexts.Select(x => new ContextItemViewModel(x)));
-                    _children.AddRange(_context.Objects.Select(x => new ComponentItemViewModel(x)));
+                    _children.AddRange(_context.Objects.Select(x => new RtcItemViewModel(x)));
                 }
 
                 return _children;
@@ -125,10 +125,10 @@ namespace RtLiaison.ViewModels
         }
     }
 
-    public class ComponentItemViewModel : TreeViewItemViewModel
+    public class RtcItemViewModel : TreeViewItemViewModel
     {
         private NamingObjectInfo _objectInfo;
-        public ComponentItemViewModel(NamingObjectInfo obj)
+        public RtcItemViewModel(NamingObjectInfo obj)
         {
             _objectInfo = obj;
         }
@@ -138,6 +138,14 @@ namespace RtLiaison.ViewModels
             get
             {
                 return _objectInfo.Name;
+            }
+        }
+
+        public string FullName
+        {
+            get
+            {
+                return _objectInfo.FullName;
             }
         }
     }

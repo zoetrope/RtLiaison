@@ -1,6 +1,6 @@
 ﻿using ReactiveRTM.Core;
 
-namespace RtLiaison.ViewModels
+namespace RtLiaison.ViewModels.Diagrams
 {
     public class RtcDiagramViewModel : RtcViewModel
     {

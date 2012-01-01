@@ -3,7 +3,9 @@
              xmlns:x="http://schemas.microsoft.com/winfx/2006/xaml"
              xmlns:mc="http://schemas.openxmlformats.org/markup-compatibility/2006" 
              xmlns:d="http://schemas.microsoft.com/expression/blend/2008"
-             xmlns:ViewModels="clr-namespace:RtLiaison.ViewModels" mc:Ignorable="d" 
+             xmlns:ViewModels="clr-namespace:RtLiaison.ViewModels" xmlns:lc="clr-namespace:RtLiaison.Controls"
+             xmlns:i="http://schemas.microsoft.com/expression/2010/interactivity"
+             xmlns:Behaviors="clr-namespace:RtLiaison.Behaviors" mc:Ignorable="d" 
              d:DesignHeight="300" d:DesignWidth="300">
     
     <UserControl.Resources>
@@ -37,11 +39,14 @@
         </HierarchicalDataTemplate>
 
         <HierarchicalDataTemplate 
-                            DataType="{x:Type ViewModels:ComponentItemViewModel}"
+                            DataType="{x:Type ViewModels:RtcItemViewModel}"
                             ItemsSource="{Binding Children}">
             <StackPanel Orientation="Horizontal">
                 <Image Width="16" Height="16" Margin="3,0" Source="{StaticResource ImageComponent}" />
                 <TextBlock Text="{Binding Name}" />
+                <i:Interaction.Behaviors>
+                    <Behaviors:DraggableItemBehavior />
+                </i:Interaction.Behaviors>
             </StackPanel>
         </HierarchicalDataTemplate>
 
@@ -68,8 +73,32 @@
         </DataTemplate>
     </UserControl.Resources>
     
-    
-    <Grid>
+    <Grid Margin="3">
+        <Grid.RowDefinitions>
+            <RowDefinition Height="Auto"/>
+            <RowDefinition/>
+        </Grid.RowDefinitions>
+
+        <Grid Grid.Row="0">
+            <Grid.ColumnDefinitions>
+                <ColumnDefinition/>
+                <ColumnDefinition Width="Auto"/>
+            </Grid.ColumnDefinitions>
+
+            <TextBlock Grid.Column="0" Text="ネーミングサービス" VerticalAlignment="Center"/>
+            <lc:DropDownMenuButton Grid.Column="1" HorizontalAlignment="Right" Padding="0"
+                    Style="{StaticResource ImageButtonStyle}" 
+                    Tag="{StaticResource ImageSetting}"
+                    Content="ネーミングサービスの操作を行います">
+                <lc:DropDownMenuButton.DropDownContextMenu>
+                    <ContextMenu>
+                        <MenuItem Header="ネーミングサービスの追加" Command="{Binding AddNamingServiceCommand}"/>
+                        <MenuItem Header="ネーミングサービスの編集" Command="{Binding EditNamingServiceCommand}"/>
+                        <MenuItem Header="ネーミングサービスの削除" Command="{Binding RemoveNamingServiceCommand}"/>
+                    </ContextMenu>
+                </lc:DropDownMenuButton.DropDownContextMenu>
+            </lc:DropDownMenuButton>
+        </Grid>
         <TreeView Grid.Row="1" ItemsSource="{Binding NamingServiceTree}">
         </TreeView>
     </Grid>

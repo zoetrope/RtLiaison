@@ -114,13 +114,18 @@
       <Generator>MSBuild:Compile</Generator>
       <SubType>Designer</SubType>
     </ApplicationDefinition>
+    <Compile Include="Behaviors\DraggableItemBehavior.cs" />
+    <Compile Include="Behaviors\DragLineBehavior.cs" />
+    <Compile Include="Behaviors\DroppableItemBehavior.cs" />
+    <Compile Include="Controls\DropDownMenuButton.cs" />
     <Compile Include="Models\CSharpScriptEngine.cs" />
     <Compile Include="Models\PythonScriptEngine.cs" />
-    <Compile Include="ViewModels\ConnectorLineViewModel.cs" />
+    <Compile Include="ViewModels\Diagrams\ConnectorLineViewModel.cs" />
+    <Compile Include="ViewModels\Diagrams\PortViewModel.cs" />
     <Compile Include="ViewModels\DiagramViewModel.cs" />
     <Compile Include="ViewModels\InteractiveViewModel.cs" />
     <Compile Include="ViewModels\NamingServiceTreeViewModel.cs" />
-    <Compile Include="ViewModels\RtcDiagramViewModel.cs" />
+    <Compile Include="ViewModels\Diagrams\RtcDiagramViewModel.cs" />
     <Compile Include="ViewModels\RtcListViewModel.cs" />
     <Compile Include="ViewModels\RtcViewModel.cs" />
     <Compile Include="Actions\InsertPromptAction.cs" />
@@ -130,27 +135,33 @@
     <Compile Include="Behaviors\PlaceHolderBehavior.cs" />
     <Compile Include="Behaviors\SelectAllTextOnFocusBehavior.cs" />
     <Compile Include="ViewModels\TreeViewItemViewModel.cs" />
-    <Compile Include="Controls\CanonicalSpline.xaml.cs">
-      <DependentUpon>CanonicalSpline.xaml</DependentUpon>
-    </Compile>
-    <Compile Include="Controls\CanonicalSplineHelper.cs" />
     <Compile Include="Converters\PointCollectionConverter.cs" />
+    <Compile Include="Views\Diagrams\InPortDiagram.xaml.cs">
+      <DependentUpon>InPortDiagram.xaml</DependentUpon>
+    </Compile>
+    <Compile Include="Views\Diagrams\OutPortDiagram.xaml.cs">
+      <DependentUpon>OutPortDiagram.xaml</DependentUpon>
+    </Compile>
     <Compile Include="Views\InteractiveView.xaml.cs">
       <DependentUpon>InteractiveView.xaml</DependentUpon>
     </Compile>
     <Compile Include="Views\NamingServiceTreeView.xaml.cs">
       <DependentUpon>NamingServiceTreeView.xaml</DependentUpon>
     </Compile>
-    <Compile Include="Views\RtcDiagramView.xaml.cs">
-      <DependentUpon>RtcDiagramView.xaml</DependentUpon>
+    <Compile Include="Views\Diagrams\RtcDiagram.xaml.cs">
+      <DependentUpon>RtcDiagram.xaml</DependentUpon>
     </Compile>
-    <Page Include="Views\ConnectorLineView.xaml">
+    <Page Include="Views\Diagrams\ConnectorLine.xaml">
       <Generator>MSBuild:Compile</Generator>
       <SubType>Designer</SubType>
     </Page>
-    <Page Include="Controls\CanonicalSpline.xaml">
-      <Generator>MSBuild:Compile</Generator>
+    <Page Include="Views\Diagrams\InPortDiagram.xaml">
       <SubType>Designer</SubType>
+      <Generator>MSBuild:Compile</Generator>
+    </Page>
+    <Page Include="Views\Diagrams\OutPortDiagram.xaml">
+      <SubType>Designer</SubType>
+      <Generator>MSBuild:Compile</Generator>
     </Page>
     <Page Include="Views\DiagramView.xaml">
       <Generator>MSBuild:Compile</Generator>
@@ -169,8 +180,8 @@
       <SubType>Code</SubType>
     </Compile>
     <Compile Include="ViewModels\MainWindowViewModel.cs" />
-    <Compile Include="Views\ConnectorLineView.xaml.cs">
-      <DependentUpon>ConnectorLineView.xaml</DependentUpon>
+    <Compile Include="Views\Diagrams\ConnectorLine.xaml.cs">
+      <DependentUpon>ConnectorLine.xaml</DependentUpon>
     </Compile>
     <Compile Include="Views\DiagramView.xaml.cs">
       <DependentUpon>DiagramView.xaml</DependentUpon>
@@ -183,7 +194,7 @@
       <SubType>Designer</SubType>
       <Generator>MSBuild:Compile</Generator>
     </Page>
-    <Page Include="Views\RtcDiagramView.xaml">
+    <Page Include="Views\Diagrams\RtcDiagram.xaml">
       <Generator>MSBuild:Compile</Generator>
       <SubType>Designer</SubType>
     </Page>
@@ -209,6 +220,7 @@
     <EmbeddedResource Include="Properties\Resources.resx">
       <Generator>ResXFileCodeGenerator</Generator>
       <LastGenOutput>Resources.Designer.cs</LastGenOutput>
+      <SubType>Designer</SubType>
     </EmbeddedResource>
     <None Include="eula.rtf" />
     <None Include="packages.config" />

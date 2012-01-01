@@ -2,37 +2,64 @@
              xmlns="http://schemas.microsoft.com/winfx/2006/xaml/presentation"
              xmlns:x="http://schemas.microsoft.com/winfx/2006/xaml"
              xmlns:mc="http://schemas.openxmlformats.org/markup-compatibility/2006" 
-             xmlns:d="http://schemas.microsoft.com/expression/blend/2008" xmlns:Views="clr-namespace:RtLiaison.Views" mc:Ignorable="d" 
+             xmlns:d="http://schemas.microsoft.com/expression/blend/2008" xmlns:Views="clr-namespace:RtLiaison.Views"
+             xmlns:i="http://schemas.microsoft.com/expression/2010/interactivity"
+             xmlns:Behaviors="clr-namespace:RtLiaison.Behaviors" xmlns:Diagrams="clr-namespace:RtLiaison.Views.Diagrams"
+             mc:Ignorable="d" 
              d:DesignHeight="600" d:DesignWidth="800">
 
-    <Grid Background="LightBlue" AllowDrop="True" Drop="Image_Drop" >
+    <Grid>
+        <Grid.RowDefinitions>
+            <RowDefinition Height="Auto"/>
+            <RowDefinition Height="*"/>
+        </Grid.RowDefinitions>
+            
+        <StackPanel Orientation="Horizontal" Grid.Row="0">
+            <Button>テスト</Button>
+            <Button>テスト</Button>
+            <Slider Minimum="0.1" Maximum="5.0" Width="75" Value="1" />
+        </StackPanel>
+    
+        <TabControl Grid.Row="1">
+            <TabItem Header="Diagram">
+                <Grid Background="LightBlue" AllowDrop="True" >
 
-        <ItemsControl ItemsSource="{Binding Components}">
-            <ItemsControl.ItemsPanel>
-                <ItemsPanelTemplate>
-                    <!-- ClipToBoundsを指定することで、子要素が親要素からはみ出した場合に表示しない -->
-                    <Canvas ClipToBounds="true" />
-                </ItemsPanelTemplate>
-            </ItemsControl.ItemsPanel>
-            <ItemsControl.ItemTemplate>
-                <DataTemplate>
-                    <Views:RtcDiagramView DataContext="{Binding}" />
-                </DataTemplate>
-            </ItemsControl.ItemTemplate>
-        </ItemsControl>
+                    <i:Interaction.Behaviors>
+                        <Behaviors:DroppableItemBehavior/>
+                    </i:Interaction.Behaviors>
 
-        <ItemsControl ItemsSource="{Binding Connectors}">
-            <ItemsControl.ItemsPanel>
-                <ItemsPanelTemplate>
-                    <!-- ClipToBoundsを指定することで、子要素が親要素からはみ出した場合に表示しない -->
-                    <Canvas ClipToBounds="true" />
-                </ItemsPanelTemplate>
-            </ItemsControl.ItemsPanel>
-            <ItemsControl.ItemTemplate>
-                <DataTemplate>
-                    <Views:ConnectorLineView DataContext="{Binding}" />
-                </DataTemplate>
-            </ItemsControl.ItemTemplate>
-        </ItemsControl>
+
+                    <ItemsControl ItemsSource="{Binding Connectors}">
+                        <ItemsControl.ItemsPanel>
+                            <ItemsPanelTemplate>
+                                <!-- ClipToBoundsを指定することで、子要素が親要素からはみ出した場合に表示しない -->
+                                <Canvas ClipToBounds="true" />
+                            </ItemsPanelTemplate>
+                        </ItemsControl.ItemsPanel>
+                        <ItemsControl.ItemTemplate>
+                            <DataTemplate>
+                                <Diagrams:ConnectorLine DataContext="{Binding}" />
+                            </DataTemplate>
+                        </ItemsControl.ItemTemplate>
+                    </ItemsControl>
+                    
+                    <ItemsControl ItemsSource="{Binding Components}">
+                        <ItemsControl.ItemsPanel>
+                            <ItemsPanelTemplate>
+                                <!-- ClipToBoundsを指定することで、子要素が親要素からはみ出した場合に表示しない -->
+                                <Canvas ClipToBounds="true" />
+                            </ItemsPanelTemplate>
+                        </ItemsControl.ItemsPanel>
+                        <ItemsControl.ItemTemplate>
+                            <DataTemplate>
+                                <Diagrams:RtcDiagram DataContext="{Binding}" />
+                            </DataTemplate>
+                        </ItemsControl.ItemTemplate>
+                    </ItemsControl>
+                    
+                    <Diagrams:ConnectorLine DataContext="{Binding ConnectingLine}" />
+                </Grid>
+            </TabItem>
+        </TabControl>
     </Grid>
 </UserControl>
