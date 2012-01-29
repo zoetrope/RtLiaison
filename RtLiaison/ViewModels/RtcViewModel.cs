@@ -15,10 +15,8 @@ namespace RtLiaison.ViewModels
         {
             _rtComponent = rtc;
 
-            OutPortViewModel = new PortViewModel();
 
         }
 
-        public PortViewModel OutPortViewModel { get; set; }
     }
 }

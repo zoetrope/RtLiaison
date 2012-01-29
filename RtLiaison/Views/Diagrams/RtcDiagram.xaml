@@ -8,22 +8,64 @@
              xmlns:Diagrams="clr-namespace:RtLiaison.Views.Diagrams" mc:Ignorable="d" 
              d:DesignHeight="300" d:DesignWidth="300">
 
-    <Canvas>
+    <UserControl.Resources>
 
-        <Border BorderThickness="3" BorderBrush="Black" CornerRadius="3" Height="100" Width="100" Canvas.Left="10" >
-            <!-- ビヘイビアを登録 -->
+        <LinearGradientBrush x:Key="InactiveBrush" EndPoint="0.5,1" StartPoint="0.5,0">
+            <GradientStop Color="#FF292AC3" Offset="0"/>
+            <GradientStop Color="#FF8992E5" Offset="1"/>
+        </LinearGradientBrush>
+
+        <LinearGradientBrush x:Key="ActiveBrush" EndPoint="0.5,1" StartPoint="0.5,0">
+            <GradientStop Color="#FF29C347" Offset="0"/>
+            <GradientStop Color="#FFA7FFA3" Offset="1"/>
+        </LinearGradientBrush>
+
+        <LinearGradientBrush x:Key="ErrorBrush" EndPoint="0.5,1" StartPoint="0.5,0">
+            <GradientStop Color="#FFC32929" Offset="0"/>
+            <GradientStop Color="#FFE58989" Offset="1"/>
+        </LinearGradientBrush>
+
+        <LinearGradientBrush x:Key="UnknownBrush" EndPoint="0.5,1" StartPoint="0.5,0">
+            <GradientStop Color="#FF222222" Offset="0"/>
+            <GradientStop Color="#FFABABAE" Offset="1"/>
+        </LinearGradientBrush>
+
+    </UserControl.Resources>
+
+    <Canvas>
+        <Rectangle RadiusX="3" RadiusY="3"
+                Height="100" Width="100" 
+                Fill="Blue" >
+            <Rectangle.Effect>
+                <BlurEffect Radius="20" />
+            </Rectangle.Effect>
+
+        </Rectangle>
+        <Rectangle StrokeThickness="2" Stroke="Black" RadiusX="3" RadiusY="3"
+                Height="100" Width="100" 
+                Fill="{StaticResource ErrorBrush}" >
+            
             <i:Interaction.Behaviors>
                 <Behaviors1:DiagramMoveBehavior />
             </i:Interaction.Behaviors>
-            <Border.Background>
-                <LinearGradientBrush StartPoint="0.5,0" EndPoint="0.5,1">
-                    <GradientStop Color="Blue" Offset="0.0" />
-                    <GradientStop Color="#FFB1B1FF" Offset="1" />
-                </LinearGradientBrush>
-            </Border.Background>
-        </Border>
 
-        <Diagrams:OutPortDiagram Canvas.Left="0" Canvas.Top="50" DataContext="{Binding OutPortViewModel}"/>
+            <Rectangle.Style>
+                <Style TargetType="{x:Type Rectangle}">
+                    <Setter Property="Opacity" Value="1.0" />
+                    <Style.Triggers>
+                        <Trigger Property="IsMouseOver" Value="True">
+                            <Trigger.Setters>
+                                <Setter Property="Opacity" Value="0.8"/>
+                            </Trigger.Setters>
+                        </Trigger>
+                    </Style.Triggers>
+                </Style>
+            </Rectangle.Style>
+        </Rectangle>
+
+        <Diagrams:InPortDiagram Canvas.Left="0" Canvas.Top="50" DataContext="{Binding InPortViewModel}"/>
+
+        <Diagrams:OutPortDiagram Canvas.Left="100" Canvas.Top="50" DataContext="{Binding OutPortViewModel}"/>
 
         <Canvas.RenderTransform>
             <TranslateTransform X="{Binding X}" Y="{Binding Y}" />

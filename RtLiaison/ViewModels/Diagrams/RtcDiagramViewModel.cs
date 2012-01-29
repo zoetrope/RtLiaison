@@ -9,6 +9,11 @@ namespace RtLiaison.ViewModels.Diagrams
         {
             X = x;
             Y = y;
+
+
+
+            OutPortViewModel = new PortViewModel() { X = x, Y = y };
+            InPortViewModel = new PortViewModel() { X = x, Y = y };
         }
 
 
@@ -54,5 +59,11 @@ namespace RtLiaison.ViewModels.Diagrams
             X += x;
             Y += y;
         }
+
+
+        public PortViewModel OutPortViewModel { get; set; }
+
+
+        public PortViewModel InPortViewModel { get; set; }
     }
 }

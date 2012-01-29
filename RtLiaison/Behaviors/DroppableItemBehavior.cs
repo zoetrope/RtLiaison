@@ -73,7 +73,9 @@ namespace RtLiaison.Behaviors
             {
                 var vm = (PortViewModel)dragEventArgs.Data.GetData(typeof(PortViewModel));
 
-                var source = dragEventArgs.OriginalSource as UIElement;
+                //var source = dragEventArgs.OriginalSource as UIElement;
+
+                var source = dragEventArgs.Source as UIElement;
 
                 if (source == null)
                 {

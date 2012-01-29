@@ -22,7 +22,7 @@
     
         <TabControl Grid.Row="1">
             <TabItem Header="Diagram">
-                <Grid Background="LightBlue" AllowDrop="True" >
+                <Grid Background="White" AllowDrop="True" >
 
                     <i:Interaction.Behaviors>
                         <Behaviors:DroppableItemBehavior/>
