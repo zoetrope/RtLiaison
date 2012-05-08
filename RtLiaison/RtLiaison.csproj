@@ -38,51 +38,14 @@
     <Reference Include="AurelienRibon.Ui.Terminal">
       <HintPath>..\Lib\AurelienRibon.Ui.Terminal 1.2.2\AurelienRibon.Ui.Terminal.dll</HintPath>
     </Reference>
-    <Reference Include="IronPython, Version=2.6.10920.0, Culture=neutral, PublicKeyToken=31bf3856ad364e35, processorArchitecture=MSIL">
-      <SpecificVersion>False</SpecificVersion>
-      <HintPath>..\packages\IronPython.2.6.1\lib\Net40\IronPython.dll</HintPath>
-    </Reference>
-    <Reference Include="IronPython.Modules">
-      <HintPath>..\packages\IronPython.2.6.1\lib\Net40\IronPython.Modules.dll</HintPath>
-    </Reference>
     <Reference Include="Livet">
       <HintPath>..\Lib\Livet-0.99\Livet.dll</HintPath>
-    </Reference>
-    <Reference Include="Microsoft.Dynamic">
-      <HintPath>..\packages\IronPython.2.6.1\lib\Net40\Microsoft.Dynamic.dll</HintPath>
     </Reference>
     <Reference Include="Microsoft.Expression.Interactions, Version=4.0.0.0, Culture=neutral, PublicKeyToken=31bf3856ad364e35, processorArchitecture=MSIL">
       <HintPath>..\Lib\Livet-0.99\Microsoft.Expression.Interactions.dll</HintPath>
     </Reference>
-    <Reference Include="Microsoft.Scripting">
-      <HintPath>..\packages\IronPython.2.6.1\lib\Net40\Microsoft.Scripting.dll</HintPath>
-    </Reference>
     <Reference Include="ReactiveProperty.NET40">
       <HintPath>..\packages\ReactiveProperty.0.3.2.0\lib\NET40\ReactiveProperty.NET40.dll</HintPath>
-    </Reference>
-    <Reference Include="Roslyn.Compilers, Version=1.0.0.0, Culture=neutral, PublicKeyToken=31bf3856ad364e35, processorArchitecture=MSIL">
-      <Private>True</Private>
-      <HintPath>..\packages\Roslyn.1.0.11014.5\lib\net40\Roslyn.Compilers.dll</HintPath>
-    </Reference>
-    <Reference Include="Roslyn.Compilers.CSharp, Version=1.0.0.0, Culture=neutral, PublicKeyToken=31bf3856ad364e35, processorArchitecture=MSIL">
-      <Private>True</Private>
-      <HintPath>..\packages\Roslyn.1.0.11014.5\lib\net40\Roslyn.Compilers.CSharp.dll</HintPath>
-    </Reference>
-    <Reference Include="Roslyn.Compilers.VisualBasic, Version=1.0.0.0, Culture=neutral, PublicKeyToken=31bf3856ad364e35, processorArchitecture=MSIL">
-      <Private>True</Private>
-      <HintPath>..\packages\Roslyn.1.0.11014.5\lib\net40\Roslyn.Compilers.VisualBasic.dll</HintPath>
-    </Reference>
-    <Reference Include="Roslyn.Services, Version=1.0.0.0, Culture=neutral, PublicKeyToken=31bf3856ad364e35, processorArchitecture=MSIL">
-      <Private>True</Private>
-      <HintPath>..\packages\Roslyn.1.0.11014.5\lib\net40\Roslyn.Services.dll</HintPath>
-    </Reference>
-    <Reference Include="Roslyn.Services.CSharp, Version=1.0.0.0, Culture=neutral, PublicKeyToken=31bf3856ad364e35, processorArchitecture=MSIL">
-      <Private>True</Private>
-      <HintPath>..\packages\Roslyn.1.0.11014.5\lib\net40\Roslyn.Services.CSharp.dll</HintPath>
-    </Reference>
-    <Reference Include="Roslyn.Services.VisualBasic, Version=1.0.0.0, Culture=neutral, PublicKeyToken=31bf3856ad364e35, processorArchitecture=MSIL">
-      <Private>True</Private>
-      <HintPath>..\packages\Roslyn.1.0.11014.5\lib\net40\Roslyn.Services.VisualBasic.dll</HintPath>
     </Reference>
     <Reference Include="System" />
     <Reference Include="System.ComponentModel.Composition" />
@@ -118,12 +81,9 @@
     <Compile Include="Behaviors\DragLineBehavior.cs" />
     <Compile Include="Behaviors\DroppableItemBehavior.cs" />
     <Compile Include="Controls\DropDownMenuButton.cs" />
-    <Compile Include="Models\CSharpScriptEngine.cs" />
-    <Compile Include="Models\PythonScriptEngine.cs" />
     <Compile Include="ViewModels\Diagrams\ConnectorLineViewModel.cs" />
     <Compile Include="ViewModels\Diagrams\PortViewModel.cs" />
     <Compile Include="ViewModels\DiagramViewModel.cs" />
-    <Compile Include="ViewModels\InteractiveViewModel.cs" />
     <Compile Include="ViewModels\NamingServiceTreeViewModel.cs" />
     <Compile Include="ViewModels\Diagrams\RtcDiagramViewModel.cs" />
     <Compile Include="ViewModels\RtcListViewModel.cs" />
@@ -141,9 +101,6 @@
     </Compile>
     <Compile Include="Views\Diagrams\OutPortDiagram.xaml.cs">
       <DependentUpon>OutPortDiagram.xaml</DependentUpon>
-    </Compile>
-    <Compile Include="Views\InteractiveView.xaml.cs">
-      <DependentUpon>InteractiveView.xaml</DependentUpon>
     </Compile>
     <Compile Include="Views\NamingServiceTreeView.xaml.cs">
       <DependentUpon>NamingServiceTreeView.xaml</DependentUpon>
@@ -166,10 +123,6 @@
     <Page Include="Views\DiagramView.xaml">
       <Generator>MSBuild:Compile</Generator>
       <SubType>Designer</SubType>
-    </Page>
-    <Page Include="Views\InteractiveView.xaml">
-      <SubType>Designer</SubType>
-      <Generator>MSBuild:Compile</Generator>
     </Page>
     <Page Include="Views\MainWindow.xaml">
       <Generator>MSBuild:Compile</Generator>
@@ -222,7 +175,6 @@
       <LastGenOutput>Resources.Designer.cs</LastGenOutput>
       <SubType>Designer</SubType>
     </EmbeddedResource>
-    <None Include="eula.rtf" />
     <None Include="packages.config" />
     <None Include="Properties\Settings.settings">
       <Generator>SettingsSingleFileGenerator</Generator>
@@ -250,6 +202,9 @@
     <Resource Include="Images\plug.png" />
     <Resource Include="Images\plus-circle.png" />
     <Resource Include="Images\socket.png" />
+  </ItemGroup>
+  <ItemGroup>
+    <Folder Include="Models\" />
   </ItemGroup>
   <Import Project="$(MSBuildToolsPath)\Microsoft.CSharp.targets" />
   <!-- To modify your build process, add your task inside one of the targets below and uncomment it. 

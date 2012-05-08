@@ -38,8 +38,6 @@
             <GridSplitter Height="5" Grid.Row="0" ShowsPreview="True" 
                                       HorizontalAlignment="Stretch" VerticalAlignment="Bottom"/>
 
-            <v:InteractiveView Grid.Row="1"  DataContext="{Binding InteractiveViewModel}"/>
-
 
         </Grid>
     </Grid>

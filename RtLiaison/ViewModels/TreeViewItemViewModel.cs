@@ -2,7 +2,6 @@
 using System.IO;
 using System.Linq;
 using Livet;
-using Microsoft.Scripting.Utils;
 using ReactiveRTM.Corba;
 
 namespace RtLiaison.ViewModels
@@ -73,10 +72,12 @@ namespace RtLiaison.ViewModels
             {
                 if (_children == null)
                 {
-                    var root = _client.RootContextInfo;
                     _children = new ObservableCollection<TreeViewItemViewModel>();
+                    /*
+                    var root = _client.RootContextInfo;
                     _children.AddRange(root.Contexts.Select(x => new ContextItemViewModel(x)));
                     _children.AddRange(root.Objects.Select(x=>new RtcItemViewModel(x)));
+                     */
                 }
 
                 return _children;
@@ -108,8 +109,10 @@ namespace RtLiaison.ViewModels
                 if (_children == null)
                 {
                     _children = new ObservableCollection<TreeViewItemViewModel>();
+                    /*
                     _children.AddRange(_context.Contexts.Select(x => new ContextItemViewModel(x)));
                     _children.AddRange(_context.Objects.Select(x => new RtcItemViewModel(x)));
+                    */ 
                 }
 
                 return _children;
@@ -123,6 +126,11 @@ namespace RtLiaison.ViewModels
                 return _context.Name;
             }
         }
+    }
+
+    public class NamingContextInfo
+    {
+        public string Name { get; set; }
     }
 
     public class RtcItemViewModel : TreeViewItemViewModel
@@ -148,6 +156,13 @@ namespace RtLiaison.ViewModels
                 return _objectInfo.FullName;
             }
         }
+    }
+
+    public class NamingObjectInfo
+    {
+        public string FullName { get; set; }
+
+        public string Name { get; set; }
     }
 
     public class InPortItemViewModel : TreeViewItemViewModel

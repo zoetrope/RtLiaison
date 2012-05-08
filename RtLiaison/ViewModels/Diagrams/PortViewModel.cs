@@ -10,7 +10,6 @@ using Livet.Messaging;
 using Livet.Messaging.IO;
 using Livet.Messaging.Windows;
 
-using RtLiaison.Models;
 
 namespace RtLiaison.ViewModels.Diagrams
 {

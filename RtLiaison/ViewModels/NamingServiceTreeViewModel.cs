@@ -11,7 +11,6 @@ using Livet.Messaging;
 using Livet.Messaging.IO;
 using Livet.Messaging.Windows;
 using ReactiveRTM.Corba;
-using RtLiaison.Models;
 
 namespace RtLiaison.ViewModels
 {
